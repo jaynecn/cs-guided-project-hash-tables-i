@@ -54,5 +54,43 @@ def are_words_sorted(words, alpha_order):
     Output:
     bool
     """
-    # Your code here
+    
+    alpha_dict = {}
+    for i in range(len(alpha_order)):
+        alpha_dict[alpha_order[i]] = 1
+    print(alpha_dict)
+    # Loop over the array of words
+    for i in range(len(words) - 1):
+    # look at two words at a time
+    # compare word1 with word2
+        word_1 = words[i]
+        word_2 = words[i + 1]
+        # Go letter by letter of both words
+        # letter1, letter2
+        # if letter1 < letter2, using the alpha order
+        for j in range(min(len(word_1), len(word_2))):
+            # get index of letter1, get index of letter2
+            letter_1 = word_1[j]
+            letter_2 = word_2[j]
+            # if letter 1 <= letter 2:
+                # continue
+            # else:
+                # return false
+            if alpha_dict[letter_1] > alpha_dict[letter_2]:
+                return False
+            break
+            # once we compare the words, check if word two is shorter than word one
+        # if word1 <= word2
+            #continue
+        else:
+            if len(word_1) > len(word_2):
+                return False
+        # else:
+            # return False
+    return True
+            
+words = ["lambda", "school"]
+order = "hlabcdefgijkmnopqrestuvwxyz"
 
+
+print(are_words_sorted(words, order))
